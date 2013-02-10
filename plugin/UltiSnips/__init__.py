@@ -793,7 +793,9 @@ class SnippetManager(object):
                 mode = "m"
                 break
 
-        if feedkey:
+        if feedkey == "\\<tab>":
+            _vim.command("return %s" % _vim.escape(feedkey))
+        elif feedkey:
             _vim.feedkeys(feedkey, mode)
 
     def _snips(self, before, possible):
